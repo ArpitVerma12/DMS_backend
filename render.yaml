@@ -1,0 +1,11 @@
+services:
+  - name: your-app-name
+    type: web
+    env: node
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: dms
+          property: connectionString
