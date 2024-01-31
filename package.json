@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rimraf dist",
     "build": "npm run clean && babel src --out-dir dist --source-maps"
@@ -40,5 +41,5 @@
   "babel": {
     "presets": ["babel-preset-env"]
   }
-  
+ 
 }
