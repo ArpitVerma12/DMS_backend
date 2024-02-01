@@ -18,7 +18,7 @@ const s3Storage = multerS3({
   contentType: multerS3.AUTO_CONTENT_TYPE,
   key: function (req, file, cb) {
     const { destination } = req;
-    const allowedFiletypes = ['jpeg', 'jpg', 'png', 'gif', 'mp4', 'mov', 'pdf', 'files'];
+    const allowedFiletypes = ['jpeg', 'jpg', 'png', 'gif', 'mp4', 'mov', 'pdf', 'files','mp3'];
     const filename = file.originalname.toLowerCase();
   
     if (filename.split('.').length > 2) {
