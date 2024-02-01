@@ -16,6 +16,7 @@ const createTables = async () => {
         url varchar(255),
         size varchar(255),
         Type varchar(255),
+        user_name varchar(255),
         created_at TIMESTAMP DEFAULT NOW()
       )
     `);

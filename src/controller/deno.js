@@ -6,7 +6,7 @@ const { S3Client, GetObjectCommand } = require('@aws-sdk/client-s3');
 exports.createDemo = async (req, res) => {
     let connection;
     try {
-        const{name,Category,Number,playList,size,Type}=req.body;
+        const{name,Category,Number,playList,size,Type,user_name}=req.body;
         const image= req.files.image;
         const url = image[0].location;
         connection=await pool.connect();
@@ -20,8 +20,8 @@ exports.createDemo = async (req, res) => {
           result = await connection.query(check, [aid]);
         }
   
-        const query = 'INSERT INTO demo(name,d_id,Category,Number,playList,size,Type,url) VALUES ($1, $2, $3, $4, $5,$6,$7,$8)';
-        const values = [name, aid, Category,Number,playList,size,Type, url];
+        const query = 'INSERT INTO demo(name,d_id,Category,Number,playList,size,Type,url,user_name) VALUES ($1, $2, $3, $4, $5,$6,$7,$8,$9)';
+        const values = [name, aid, Category,Number,playList,size,Type, url,user_name];
         await connection.query(query, values);
       
   
@@ -150,6 +150,7 @@ exports.createDemo = async (req, res) => {
           url,
           type,
           playlist,
+          user_name,
           created_at, // Include created_at from the database
         } = row;
   
@@ -179,6 +180,7 @@ exports.createDemo = async (req, res) => {
             type,
             url: signedUrl,
             playlist,
+            user_name,
             created_at, // Include created_at in the response
           });
         } catch (error) {
