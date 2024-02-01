@@ -130,7 +130,7 @@ exports.createDemo = async (req, res) => {
       }
   
       if (type !== undefined) {
-        findQuery += ` AND type = ${type}`;
+        findQuery += ` AND type = '${type}'`;
       }
   
       const result = await connection.query(findQuery);
