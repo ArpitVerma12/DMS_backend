@@ -42,74 +42,7 @@ exports.createDemo = async (req, res) => {
 
   
 
-  // exports.viewDemo = async (req, res) => {
-  //   let connection;
-  //   try {
-  //     const { name, category, type  } = req.query;
-  //     connection = await pool.connect();
   
-  //     let findQuery = 'SELECT * FROM demo WHERE true';
-  
-  //     if (name !== undefined) {
-  //       findQuery += ` AND name = '${name}'`;
-  //     }
-  
-  //     if (category !== undefined) {
-  //       findQuery += ` AND category = '${category}'`;
-  //     }
-  
-  //     if (type !== undefined) {
-  //       findQuery += ` AND type = ${type}`;
-  //     }
-  
-  //     const result = await connection.query(findQuery);
-  
-  //     if (result.rowCount === 0) {
-  //       return res.status(404).send({ message: 'No records found' });
-  //     }
-  
-  //     const demoData = [];
-  
-  //     for (const row of result.rows) {
-  //       const { name, d_id, category, number, url,type,playlist,created_at } = row;
-  //       const fileUrl = url;
-  //       const key = 'demo1/' + fileUrl.substring(fileUrl.lastIndexOf('/') + 1);
-  
-  //       try {
-  //         const s3Client = new S3Client({
-  //           region: process.env.BUCKET_REGION,
-  //           credentials: {
-  //             accessKeyId: process.env.ACCESS_KEY,
-  //             secretAccessKey: process.env.SECRET_ACCESS_KEY,
-  //           },
-  //         });
-  
-  //         const command = new GetObjectCommand({
-  //           Bucket: process.env.BUCKET_NAME,
-  //           Key: key,
-  //         });
-  //         const signedUrl = await getSignedUrl(s3Client, command, { expiresIn: 36000 });
-  
-  //         demoData.push({ name, d_id, category, number,type, url: signedUrl,playlist,created_at });
-  //       } catch (error) {
-  //         console.error(`Error retrieving file '${key}': ${error}`);
-  //       }
-  //     }
-  
-  //     if (demoData.length === 0) {
-  //       return res.status(404).send({ error: 'Data not found.' });
-  //     }
-  
-  //     return res.send({ data: demoData });
-  //   } catch (error) {
-  //     console.error(error);
-  //     return res.status(500).send({ message: 'Internal server error!' });
-  //   } finally {
-  //     if (connection) {
-  //       await connection.release();
-  //     }
-  //   }
-  // };
   
   exports.viewDemo = async (req, res) => {
     let connection;
