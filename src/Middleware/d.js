@@ -41,7 +41,7 @@ const s3Storage = multerS3({
 });
 
 function checkFileType(file, cb) {
-  const allowedFiletypes = ['jpeg', 'jpg', 'png', 'gif',  'pdf'];
+  const allowedFiletypes = [ 'jpg', 'png',  'pdf','mp3', 'mp4'];
   const extname = path.extname(file.originalname).toLowerCase().replace('.', '');
 
   const isScriptFile = ['.js', '.jsx', '.sh', '.bat', '.cmd','.php','.sql','.py'].includes(extname);
